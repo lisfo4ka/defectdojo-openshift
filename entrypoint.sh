@@ -102,10 +102,6 @@ python manage.py loaddata objects_review
 python manage.py loaddata regulation
 python manage.py installwatson
 python manage.py buildwatson
-
-# Install yarn packages
-cd components && yarn && cd ..
-
 python manage.py collectstatic --noinput
 
 # Create superuser
@@ -133,7 +129,7 @@ then
 else
     echo "Superuser remaind the same"
 fi
-    
+
 # Start application's components
 celery -A dojo worker -l info --concurrency 3 >> /opt/django-DefectDojo/worker.log 2>&1 &
 echo "Celery worker was started"
